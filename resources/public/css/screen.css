@@ -1,5 +1,10 @@
 html, body {
 	font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  background: #ffffff;
+}
+
+.mobile-container {
+  position: relative;
 }
 
 .phone {
@@ -19,6 +24,14 @@ html, body {
   clear: both;
   left: 20px;
   height: 564px;
+}
+.phone-screen-wrap {
+  width: 100%; height: 100%;position: relative;
+}
+
+.preview-frame {
+  width: 100%;
+  height: 100%;
 }
 
 .swiper-container {

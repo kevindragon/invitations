@@ -1,0 +1,69 @@
+{% extends "mobile_base.html" %}
+
+{% block page-styles %}
+{% style "/Swiper/dist/css/swiper.min.css" %}
+{% endblock %}
+
+{% block content %}
+<!-- top banner -->
+<div class="ic-header">
+  <!-- Slider main container -->
+  <div class="swiper-container">
+    <div class="swiper-wrapper">
+      <div class="swiper-slide"></div>
+      <div class="swiper-slide"></div>
+      <div class="swiper-slide"></div>
+    </div>
+    <!--<div class="swiper-pagination"></div>-->
+  </div>
+  <div class="ic-header-names text-center">
+    <span id="bridegroom-text">新郎名字</span>
+    <span> & </span>
+    <span id="bride-text">新娘名字</span>
+  </div>
+  <div class="ic-header-subtitle text-center">are getting married!</div>
+</div>
+<div class="ic-date-cd text-center clearfix">
+  <div class="ceremony-title">The ceremony begins in:</div>
+  <div style="margin-bottom: 10px;"><img src="/img/main-nav-divider.png"></div>
+  <div class="number-count first">
+    <div id="days" class="number-text">00</div>
+  </div>
+  <div class="number-count">
+    <div id="hours" class="number-text">00</div>
+  </div>
+  <div class="number-count">
+    <div id="minutes" class="number-text">00</div>
+  </div>
+  <div class="number-count">
+    <div id="seconds" class="number-text">00</div>
+  </div>
+</div>
+<div class="ic-location col-lg-10" id="content-text">
+  <div>我们的婚礼由您见证更加幸福</div>
+  <div>2015年2月24日[农历乙未年 戊寅月 辛未日]星期二</div>
+  <div>恭请 各位 届时光临</div>
+  <div>新郎：蒋文林</div>
+  <div>新娘：唐佩</div>
+</div>
+<!-- bottom tabs -->
+<div style="bottom: 0;position: absolute; width: 100%;">
+  <ul class="nav nav-tabs bottom-tabs">
+    <li class="active"><a href="#home" data-toggle="tab">首页</a></li>
+    <li><a href="#profile" data-toggle="tab">相册</a></li>
+    <li><a href="#" data-toggle="tab">祝福</a></li>
+  </ul>
+</div>
+{% endblock %}
+
+{% block page-scripts %}
+{% script "/Swiper/dist/js/swiper.min.js" %}
+<script>
+  var mySwiper = new Swiper ('.swiper-container', {
+    direction: 'horizontal',
+    loop: true,
+    autoplay: 5000
+//    pagination: '.swiper-pagination'
+  });
+</script>
+{% endblock %}

@@ -1,0 +1,189 @@
+{% extends "base.html" %}
+
+{% block page-styles %}
+{% style "/Swiper/dist/css/swiper.min.css" %}
+{% style "/bootstrap-material-datetimepicker/css/bootstrap-material-datetimepicker.css" %}
+{% style "/jQuery-File-Upload-9.11.2/css/style.css" %}
+{% style "/jQuery-File-Upload-9.11.2/css/jquery.fileupload.css" %}
+{% style "/jQuery-File-Upload-9.11.2/css/jquery.fileupload-ui.css" %}
+{% endblock %}
+
+{% block content %}
+
+<div class="row">
+  <!-- left form -->
+  <div class="col-sm-6 jumbotron">
+    <form class="form-horizontal" id="make_form" method="post">
+      <fieldset>
+        <legend>信息填写</legend>
+        <div class="form-group">
+          <label for="bridegroom_name" class="col-lg-2 control-label">新郎</label>
+          <div class="col-lg-10">
+            <input type="text" class="form-control" name="bridegroom_name" id="bridegroom_name" placeholder="新郎名字">
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="bride_name" class="col-lg-2 control-label">新娘</label>
+          <div class="col-lg-10">
+            <input type="text" class="form-control" name="bride_name" id="bride_name" placeholder="新郎名字">
+            <!--<div class="checkbox">-->
+              <!--<label>-->
+                <!--<input type="checkbox"> Checkbox-->
+              <!--</label>-->
+            <!--</div>-->
+            <!--<br>-->
+            <!--<div class="togglebutton">-->
+              <!--<label>-->
+                <!--<input type="checkbox" checked=""> Toggle button-->
+              <!--</label>-->
+            <!--</div>-->
+          </div>
+        </div>
+      </fieldset>
+    </form>
+    <form class="form-horizontal">
+      <fieldset>
+        <div class="form-group">
+          <label class="col-lg-2 control-label">滚动图片</label>
+          <div class="col-lg-10">
+            <div class="banner-images-wrap"></div>
+            <span class="btn btn-success fileinput-button">
+              <i class="glyphicon glyphicon-plus"></i>
+              <span>添加...</span>
+              <input type="file" id="banner_images" name="banner_images" data-url="/upload/banner">
+            </span>
+            <!--<input id="banner_images" type="file" name="banner_images" data-url="/upload/banner" multiple>-->
+          </div>
+        </div>
+      </fieldset>
+    </form>
+    <form class="form-horizontal">
+      <fieldset>
+        <div class="form-group">
+          <label for="hold_date" class="col-lg-2 control-label">举办时间</label>
+          <div class="col-lg-10">
+            <input type="text" class="form-control" name="hold_date" id="hold_date" placeholder="举办时间"/>
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="content" class="col-lg-2 control-label">请柬内容</label>
+          <div class="col-lg-10">
+            <textarea class="form-control" rows="3" name="content" id="content"></textarea>
+            <!--<span class="help-block">A longer block of help text that breaks onto a new line and may extend beyond one line.</span>-->
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="inputFile" class="col-lg-2 control-label">File</label>
+          <div class="col-lg-10">
+            <input type="text" readonly="" class="form-control floating-label" placeholder="Browse...">
+            <input type="file" id="inputFile" multiple="">
+          </div>
+        </div>
+        <div class="form-group">
+          <label class="col-lg-2 control-label">Radios</label>
+          <div class="col-lg-10">
+            <div class="radio radio-primary">
+              <label>
+                <input type="radio" name="optionsRadios" id="optionsRadios1" value="option1" checked="">
+                Option one is this
+              </label>
+            </div>
+            <div class="radio radio-primary">
+              <label>
+                <input type="radio" name="optionsRadios" id="optionsRadios2" value="option2">
+                Option two can be something else
+              </label>
+            </div>
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="select" class="col-lg-2 control-label">Selects</label>
+          <div class="col-lg-10">
+            <select class="form-control" id="select">
+              <option>1</option>
+              <option>2</option>
+              <option>3</option>
+              <option>4</option>
+              <option>5</option>
+            </select>
+            <br>
+            <select multiple="" class="form-control">
+              <option>1</option>
+              <option>2</option>
+              <option>3</option>
+              <option>4</option>
+              <option>5</option>
+            </select>
+          </div>
+        </div>
+        <div class="form-group">
+          <div class="col-lg-6 col-lg-offset-6">
+            <button type="submit" class="btn btn-primary">保存</button>
+          </div>
+        </div>
+      </fieldset>
+    </form>
+  </div>
+  <!-- right preview -->
+  <div class="col-sm-6">
+
+    <div class="row">
+      <div class="phone">
+        <div>
+          <img class="phone-appearance" src="/img/snapshot_bg.png" alt="Snapshot"/>
+        </div>
+        <div class="phone-screen">
+          <iframe src="/preview" frameborder="0" class="preview-frame"></iframe>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+{% endblock %}
+
+{% block page-scripts %}
+{% script "/Swiper/dist/js/swiper.min.js" %}
+{% script "/js/moment-with-locales.js" %}
+{% script "/bootstrap-material-datetimepicker/js/bootstrap-material-datetimepicker.js" %}
+{% script "/jQuery-File-Upload-9.11.2/js/vendor/jquery.ui.widget.js" %}
+{% script "/jQuery-File-Upload-9.11.2/js/jquery.iframe-transport.js" %}
+{% script "/jQuery-File-Upload-9.11.2/js/jquery.fileupload.js" %}
+<script>
+  function iframeContains(selector) {
+    return $(selector).contents();
+  }
+  $(function() {
+    $('#hold_date').bootstrapMaterialDatePicker({ format : 'YYYY-MM-DD HH:mm' });
+    $('#bridegroom_name').keyup(function() {
+      var text = $.trim($(this).val());
+      if (text != '') {
+        iframeContains('.preview-frame').find('#bridegroom-text').text(text);
+      }
+    });
+    $('#bride_name').keyup(function() {
+      var text = $.trim($(this).val());
+      if (text != '') {
+        iframeContains('.preview-frame').find('#bride-text').text(text);
+      }
+    });
+    $('#content').keyup(function() {
+      var text = $.trim($(this).val()).replace(/\n/g, '<br>');
+      if (text != '') {
+        iframeContains('.preview-frame').find('#content-text').html(text);
+      }
+    });
+
+    $('#banner_images').fileupload({
+      dataType: 'json',
+      done: function (e, data) {
+        $.each(data.result.files, function (index, file) {
+          $('<img>').prop('src', file.name).addClass("col-lg-3").appendTo($('.banner-images-wrap'));
+          //$('.banner-images-wrap').text(file.name).appendTo(document.body);
+        });
+      }
+    });
+  });
+</script>
+{% endblock %}
