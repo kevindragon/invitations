@@ -96,3 +96,7 @@ html, body {
   width: 33.333333%;
   text-align: center;
 }
+
+.join-form {
+  margin-top: 60px;
+}

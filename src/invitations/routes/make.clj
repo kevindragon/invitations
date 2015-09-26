@@ -34,7 +34,13 @@
       {:body
        { :files [{:name filename
                   :size size
-                  :error "Upload error."}]}})))
+                  :error "Upload error."}]}}))
+  ;{:body
+  ; {:files [{:name (str "/abc")
+  ;           :size size
+  ;           :url (str "/bcd")
+  ;           :thumbnailUrl (str "/cde")}]}}
+  )
 
 (defroutes
   make-routes

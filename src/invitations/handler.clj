@@ -3,6 +3,7 @@
             [invitations.layout :refer [error-page]]
             [invitations.routes.home :refer [home-routes]]
             [invitations.routes.make :refer [make-routes]]
+            [invitations.routes.user :refer [user-routes]]
             [invitations.middleware :as middleware]
             [compojure.route :as route]
             [taoensso.timbre :as timbre]
@@ -41,6 +42,7 @@
   (routes
     (wrap-routes #'home-routes middleware/wrap-csrf)
     #'make-routes
+    #'user-routes
     (route/not-found
       (:body
         (error-page {:status 404

@@ -27,7 +27,8 @@
                  [org.immutant/web "2.1.0"]
                  [korma "0.4.2"]
                  [pandect "0.5.4"]
-                 [image-resizer "0.1.8"]]
+                 [image-resizer "0.1.8"]
+                 [bouncer "0.3.3"]]
 
   :min-lein-version "2.0.0"
   :uberjar-name "invitations.jar"
