@@ -1,0 +1,56 @@
+<div class="navbar navbar-material-primary">
+  <div class="navbar-header">
+    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-responsive-collapse">
+      <span class="icon-bar"></span>
+      <span class="icon-bar"></span>
+      <span class="icon-bar"></span>
+    </button>
+    <a class="navbar-brand" href="/">Invitations</a>
+  </div>
+  <div class="navbar-collapse collapse navbar-responsive-collapse">
+    <ul class="nav navbar-nav">
+      <li class="{{menu.home}}"><a href="/">首页</a></li>
+      <!--<li><a href="javascript:void(0)">Link</a></li>-->
+      <li class="{{menu.wedding}}"><a href="/make/wedding">喜帖</a></li>
+      <li class="{{menu.birthday}}"><a href="/make/birthday">生日请帖</a></li>
+      <li class="dropdown">
+        <a href="bootstrap-elements.html" data-target="#"
+           class="dropdown-toggle" data-toggle="dropdown">创建
+          <b class="caret"></b>
+        </a>
+        <ul class="dropdown-menu">
+          <li><a href="javascript:void(0)">宝宝百日宴/满月酒</a></li>
+          <!--<li class="divider"></li>-->
+          <li><a href="javascript:void(0);">乔迁</a></li>
+          <li><a href="javascript:void(0)">升学宴</a></li>
+          <li><a href="javascript:void(0)">活动聚会邀请</a></li>
+        </ul>
+      </li>
+      {% if user|empty? %}
+      <li class="{{menu.login}}"><a href="/login">登录</a></li>
+      <li class="{{menu.join}}"><a href="/join">注册</a></li>
+      {% endif %}
+      {% if user %}
+      <li class="{{menu.user}}"><a href="/user">{{user.email}}</a></li>
+      <li class="{{menu.logout}}"><a href="/logout">退出</a></li>
+      {% endif %}
+    </ul>
+    <!--<form class="navbar-form navbar-left">-->
+    <!--<input type="text" class="form-control col-lg-8" placeholder="Search">-->
+    <!--</form>-->
+    <ul class="nav navbar-nav navbar-right">
+      <li><a href="javascript:void(0)">给点意见</a></li>
+      <li class="dropdown">
+        <a href="bootstrap-elements.html" data-target="#" class="dropdown-toggle" data-toggle="dropdown">Dropdown <b
+            class="caret"></b></a>
+        <ul class="dropdown-menu">
+          <li><a href="javascript:void(0)">Action</a></li>
+          <li><a href="javascript:void(0)">Another action</a></li>
+          <li><a href="javascript:void(0)">Something else here</a></li>
+          <li class="divider"></li>
+          <li><a href="javascript:void(0)">Separated link</a></li>
+        </ul>
+      </li>
+    </ul>
+  </div>
+</div>

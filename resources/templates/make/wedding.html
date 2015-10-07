@@ -1,77 +1,76 @@
 {% extends "base.html" %}
 
 {% block page-styles %}
-{% style "/Swiper/dist/css/swiper.min.css" %}
-{% style "/bootstrap-material-datetimepicker/css/bootstrap-material-datetimepicker.css" %}
 {% style "/jQuery-File-Upload-9.11.2/css/style.css" %}
 {% style "/jQuery-File-Upload-9.11.2/css/jquery.fileupload.css" %}
 {% style "/jQuery-File-Upload-9.11.2/css/jquery.fileupload-ui.css" %}
+{% style "/bootstrap-datetimepicker/css/bootstrap-datetimepicker.min.css" %}
 {% endblock %}
 
 {% block content %}
 
 <div class="row">
   <!-- left form -->
-  <div class="col-sm-6 jumbotron">
-    <form class="form-horizontal" id="make_form" method="post">
-      <fieldset>
-        <legend>信息填写</legend>
-        <div class="form-group">
-          <label for="bridegroom_name" class="col-lg-2 control-label">新郎</label>
-          <div class="col-lg-10">
-            <input type="text" class="form-control" name="bridegroom_name" id="bridegroom_name" placeholder="新郎名字">
-          </div>
+  <div class="col-md-7 jumbotron">
+    <div class="form-horizontal">
+      <legend>信息填写</legend>
+      <div class="form-group">
+        <label for="bridegroom_name" class="col-lg-2 control-label">新郎</label>
+        <div class="col-lg-10">
+          <input type="text" class="form-control" name="bridegroom_name" id="bridegroom_name" placeholder="新郎名字">
         </div>
-        <div class="form-group">
-          <label for="bride_name" class="col-lg-2 control-label">新娘</label>
-          <div class="col-lg-10">
-            <input type="text" class="form-control" name="bride_name" id="bride_name" placeholder="新郎名字">
-            <!--<div class="checkbox">-->
-              <!--<label>-->
-                <!--<input type="checkbox"> Checkbox-->
-              <!--</label>-->
-            <!--</div>-->
-            <!--<br>-->
-            <!--<div class="togglebutton">-->
-              <!--<label>-->
-                <!--<input type="checkbox" checked=""> Toggle button-->
-              <!--</label>-->
-            <!--</div>-->
-          </div>
+      </div>
+      <div class="form-group">
+        <label for="bride_name" class="col-lg-2 control-label">新娘</label>
+        <div class="col-lg-10">
+          <input type="text" class="form-control" name="bride_name" id="bride_name" placeholder="新娘名字">
         </div>
-      </fieldset>
-    </form>
-    <form class="form-horizontal">
-      <fieldset>
-        <div class="form-group">
-          <label class="col-lg-2 control-label">滚动图片</label>
-          <div class="col-lg-10">
-            <div class="banner-images-wrap"></div>
+      </div>
+    </div>
+    <div class="form-horizontal">
+      <div class="form-group">
+        <label class="col-lg-2 control-label">滚动图片</label>
+        <div class="col-lg-10">
+          <div class="banner-images-wrap clearfix">
+            <div class="banner-img-add banner-img-add-1 col-xs-4">
+              <img src="/img/add.png" class="col-xs-12">
+              <button type="button" class="close">×</button>
+            </div>
+            <div class="banner-img-add banner-img-add-2 col-xs-4">
+              <img src="/img/add.png" class="col-xs-12">
+              <button type="button" class="close">×</button>
+            </div>
+            <div class="banner-img-add banner-img-add-3 col-xs-4">
+              <img src="/img/add.png" class="col-xs-12">
+              <button type="button" class="close">×</button>
+            </div>
+          </div>
+          <div>
             <span class="btn btn-success fileinput-button">
               <i class="glyphicon glyphicon-plus"></i>
               <span>添加...</span>
-              <input type="file" id="banner_images" name="banner_images" data-url="/upload/banner">
+              <input type="file" id="add_banner_images" name="banner_images" data-url="/upload/banner">
             </span>
-            <!--<input id="banner_images" type="file" name="banner_images" data-url="/upload/banner" multiple>-->
           </div>
         </div>
-      </fieldset>
-    </form>
+      </div>
+    </div>
     <form class="form-horizontal">
       <fieldset>
         <div class="form-group">
-          <label for="hold_date" class="col-lg-2 control-label">举办时间</label>
-          <div class="col-lg-10">
-            <input type="text" class="form-control" name="hold_date" id="hold_date" placeholder="举办时间"/>
+          <label for="datetime" class="col-lg-2 control-label">举办时间</label>
+          <div class="col-sm-10">
+            <input type="text" class="form-control" name="datetime" id="datetime" placeholder="举办时间"/>
           </div>
         </div>
         <div class="form-group">
           <label for="content" class="col-lg-2 control-label">请柬内容</label>
           <div class="col-lg-10">
-            <textarea class="form-control" rows="3" name="content" id="content"></textarea>
+            <textarea class="form-control" rows="6" name="content" id="content"></textarea>
             <!--<span class="help-block">A longer block of help text that breaks onto a new line and may extend beyond one line.</span>-->
           </div>
         </div>
+        <!--
         <div class="form-group">
           <label for="inputFile" class="col-lg-2 control-label">File</label>
           <div class="col-lg-10">
@@ -116,8 +115,14 @@
             </select>
           </div>
         </div>
+        -->
+        <div class="hidden-fields">
+          <input type="hidden" name="bridegroom_name">
+          <input type="hidden" name="bride_name">
+          <input type="hidden" name="banner_images">
+        </div>
         <div class="form-group">
-          <div class="col-lg-6 col-lg-offset-6">
+          <div class="col-lg-6 col-lg-offset-6 text-right">
             <button type="submit" class="btn btn-primary">保存</button>
           </div>
         </div>
@@ -125,7 +130,7 @@
     </form>
   </div>
   <!-- right preview -->
-  <div class="col-sm-6">
+  <div class="col-md-5">
 
     <div class="row">
       <div class="phone">
@@ -133,7 +138,7 @@
           <img class="phone-appearance" src="/img/snapshot_bg.png" alt="Snapshot"/>
         </div>
         <div class="phone-screen">
-          <iframe src="/preview" frameborder="0" class="preview-frame"></iframe>
+          <iframe src="/preview" frameborder="0" id="preview_frame" class="preview-frame"></iframe>
         </div>
       </div>
     </div>
@@ -144,43 +149,101 @@
 {% endblock %}
 
 {% block page-scripts %}
-{% script "/Swiper/dist/js/swiper.min.js" %}
-{% script "/js/moment-with-locales.js" %}
-{% script "/bootstrap-material-datetimepicker/js/bootstrap-material-datetimepicker.js" %}
 {% script "/jQuery-File-Upload-9.11.2/js/vendor/jquery.ui.widget.js" %}
 {% script "/jQuery-File-Upload-9.11.2/js/jquery.iframe-transport.js" %}
 {% script "/jQuery-File-Upload-9.11.2/js/jquery.fileupload.js" %}
+{% script "/bootstrap-datetimepicker/js/bootstrap-datetimepicker.js" %}
+{% script "/bootstrap-datetimepicker/js/locales/bootstrap-datetimepicker.zh-CN.js" %}
 <script>
-  function iframeContains(selector) {
-    return $(selector).contents();
+  var bannerImages = {
+    data: [],
+    add: function(val) {
+      if ($.inArray(val, this.data) < 0) {
+        this.data.push(val);
+        $('.banner-img-add-'+this.data.length+' img:eq(0)')
+            .prop('src', this.data[this.data.length-1]);
+      }
+    },
+    remove: function(val) {
+      for (var i = 0; i < this.data.length; i++) {
+        if (val == this.data[i]) {
+          delete this.data[i];
+        }
+      }
+    },
+    all: function() {
+      return this.data.join(";");
+    },
+    images: function() {
+      return this.data;
+    },
+    each: function(f) {
+      for (var index = 0; index < this.data.length; index++) {
+        f(index, this.data[index]);
+      }
+    }
+  };
+  var datum = {
+    data: {banner: [], name: {}},
+    setBanner: function(images) { this.data['banner'] = images; },
+    setName: function(name, value) { this.data['name'][name] = value; },
+    setDateTime: function(dateTime) { this.data['dateTime'] = dateTime; },
+    setContent: function(content) { this.data['content'] = content; },
+    transfer: function() {
+      var iFrameWin = $('#preview_frame').get(0).contentWindow.window;
+      iFrameWin.receive(this.data);
+    }
+  };
+
+  function setHiddenFields(name, value) {
+    $('.hidden-fields input[name='+name+']').val(value);
   }
   $(function() {
-    $('#hold_date').bootstrapMaterialDatePicker({ format : 'YYYY-MM-DD HH:mm' });
     $('#bridegroom_name').keyup(function() {
       var text = $.trim($(this).val());
-      if (text != '') {
-        iframeContains('.preview-frame').find('#bridegroom-text').text(text);
-      }
+      datum.setName('bridegroom', text);
+      setHiddenFields('bridegroom_name', text);
+      datum.transfer();
     });
     $('#bride_name').keyup(function() {
       var text = $.trim($(this).val());
-      if (text != '') {
-        iframeContains('.preview-frame').find('#bride-text').text(text);
-      }
+      datum.setName('bride', text);
+      setHiddenFields('bride_name', text);
+      datum.transfer();
     });
+    $('#datetime')
+        .datetimepicker({ startDate: new Date(), format: 'yyyy-mm-dd hh:ii' })
+        .on('changeDate', function(ev) {
+          datum.setDateTime(new Date(ev.date));
+          datum.transfer();
+        }
+    );
     $('#content').keyup(function() {
       var text = $.trim($(this).val()).replace(/\n/g, '<br>');
-      if (text != '') {
-        iframeContains('.preview-frame').find('#content-text').html(text);
-      }
+      datum.setContent(text);
+      datum.transfer();
     });
 
-    $('#banner_images').fileupload({
+    $('.banner-img-add .close').click(function() {
+      var img = $(this).parent().find('img');
+      bannerImages.remove(img.prop('src'));
+      img.prop('src', '/img/add.png');
+      $(this).hide();
+      setHiddenFields('banner_images', bannerImages.all());
+      datum.setBanner(bannerImages.images());
+      datum.transfer();
+    });
+
+    $('#add_banner_images').fileupload({
       dataType: 'json',
       done: function (e, data) {
         $.each(data.result.files, function (index, file) {
-          $('<img>').prop('src', file.name).addClass("col-lg-3").appendTo($('.banner-images-wrap'));
-          //$('.banner-images-wrap').text(file.name).appendTo(document.body);
+          bannerImages.add(file.name);
+        });
+        bannerImages.each(function(i, url) {
+          setHiddenFields('banner_images', bannerImages.all());
+          datum.setBanner(bannerImages.images());
+          datum.transfer();
         });
       }
     });

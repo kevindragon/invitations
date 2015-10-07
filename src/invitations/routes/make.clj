@@ -9,41 +9,35 @@
 (defn template-file [type]
   (str "make/" type ".html"))
 
-(defn make-card [type]
-  (layout/render (template-file type)))
+(defn make-card [type req]
+  (layout/render (template-file type) req))
 
-(defn preview []
-  (layout/render "make/preview.html"))
+(defn preview [req]
+  (layout/render "make/preview.html" req))
 
 (defn generate-filename
   "生成文件路径和文件名"
-  [filename]
-  (gen-res-filename (str (get-user-id) "/") filename))
+  [filename req]
+  (gen-res-filename (str (get-user-id req) "/") filename))
 
-(defn upload-banner [{:keys [tempfile size filename]}]
-  (let [[output-path output-filename] (generate-filename filename)
+(defn upload-banner [{:keys [tempfile size filename]} req]
+  (let [[output-path output-filename] (generate-filename filename req)
         copy-ok? (copy-file tempfile (str output-path output-filename))]
     (if copy-ok?
       (let [[url-path url-filename]
             (create-suitable-images (str output-path output-filename))]
         {:body
-         {:files [{:name (str "/" url-path url-filename)
+         {:files [{:name (str "/" output-path output-filename)
                    :size size
                    :url (str "/" url-path url-filename)
                    :thumbnailUrl (str "/" url-path url-filename)}]}})
       {:body
        { :files [{:name filename
                   :size size
-                  :error "Upload error."}]}}))
-  ;{:body
-  ; {:files [{:name (str "/abc")
-  ;           :size size
-  ;           :url (str "/bcd")
-  ;           :thumbnailUrl (str "/cde")}]}}
-  )
+                  :error "Upload error."}]}})))
 
 (defroutes
   make-routes
-  (GET "/preview" [] (preview))
-  (GET "/make/:type" [type] (make-card type))
-  (POST "/upload/banner" [banner_images] (upload-banner banner_images)))
+  (GET "/preview" req (preview req))
+  (GET "/make/:type" [type :as req] (make-card type req))
+  (POST "/upload/banner" [banner_images :as req] (upload-banner banner_images req)))

@@ -3,13 +3,13 @@
             [compojure.core :refer [defroutes GET]]
             [ring.util.http-response :refer [ok]]))
 
-(defn home-page []
-  (layout/render "home.html"))
+(defn home-page [req]
+  (layout/render "home.html" req))
 
-(defn about-page []
-  (layout/render "about.html"))
+(defn about-page [req]
+  (layout/render "about.html" req))
 
 (defroutes home-routes
-  (GET "/" [] (home-page))
-  (GET "/about" [] (about-page)))
+  (GET "/" req (home-page req))
+  (GET "/about" req (about-page req)))
 

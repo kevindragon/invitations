@@ -3,6 +3,18 @@ html, body {
   background: #ffffff;
 }
 
+.center-img-wrapper {
+  height:100%;
+  width: 100%;
+  margin: 0;
+  padding: 0;
+  border: 0;
+}
+.center-img-wrapper td {
+  vertical-align: middle;
+  text-align: center;
+}
+
 .mobile-container {
   position: relative;
 }
@@ -50,6 +62,7 @@ html, body {
   width: 100%;
   font-family: 'Great Vibes', cursive;
   font-size: 2em;
+  z-index: 999;
 }
 
 .ic-header-subtitle {
@@ -58,6 +71,11 @@ html, body {
   width: 100%;
   font-family: 'Great Vibes', cursive;
   font-size: 1.2em;
+  z-index: 999;
+}
+
+.banner-item {
+  background: #ffffff;
 }
 
 .ic-date-cd {
@@ -99,4 +117,9 @@ html, body {
 
 .join-form {
   margin-top: 60px;
+}
+
+.banner-img-add .close {
+  position: absolute;
+  display: none;
 }

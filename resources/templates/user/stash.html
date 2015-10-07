@@ -1,0 +1,16 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<div class="row join-form">
+  <div class="col-md-3 col-xs-1"></div>
+  <div class="col-md-6 col-xs-10">
+    <div class="well bs-component">
+      我们发了一封验证的邮件到您的邮箱，请到您的进行验证。
+    </div>
+    <div class="col-md-4 col-md-offset-8">
+      <a href="http://{{mail-domain}}" target="_blank" class="btn btn-primary">登录邮箱验证</a>
+    </div>
+  </div>
+</div>
+{% endblock %}
