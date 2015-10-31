@@ -2,73 +2,105 @@
 
 {% block page-styles %}
 {% style "/Swiper/dist/css/swiper.min.css" %}
-{% style "/css/mobile.css" %}
 {% endblock %}
 
 {% block content %}
-<div class="m-home" id="home">
-  <!-- top banner -->
-  <div class="ic-header">
-    <!-- Slider main container -->
-    <div class="swiper-container">
+<div class="tab-content">
+  <div class="m-home tab-pane fade in active" id="home">
+    <!-- top banner -->
+    <div class="ic-header">
+      <!-- Slider main container -->
+      <div class="swiper-container" id="banner-swiper">
+        <div class="swiper-wrapper">
+          <div class="swiper-slide banner-item">
+            <table class="center-img-wrapper">
+              <tr>
+                <td><img class="banner-1" src="/banners/banner1.jpg" width="100%"/></td>
+              </tr>
+            </table>
+          </div>
+          <div class="swiper-slide banner-item">
+            <table class="center-img-wrapper">
+              <tr>
+                <td><img class="banner-2" src="/banners/banner2.jpg" width="100%"/></td>
+              </tr>
+            </table>
+          </div>
+          <div class="swiper-slide banner-item">
+            <table class="center-img-wrapper">
+              <tr>
+                <td><img class="banner-3" src="/banners/banner3.jpg" width="100%"/></td>
+              </tr>
+            </table>
+          </div>
+        </div>
+        <!--<div class="swiper-pagination"></div>-->
+      </div>
+      <div class="ic-header-names text-center">
+        <span id="bridegroom_text">新郎名字</span>
+        <span> & </span>
+        <span id="bride_text">新娘名字</span>
+      </div>
+      <div class="ic-header-subtitle text-center">are getting married!</div>
+    </div>
+    <div class="ic-date-cd text-center clearfix">
+      <div class="ceremony-title">The ceremony begins in:</div>
+      <div style="margin-bottom: 10px;"><img src="/img/main-nav-divider.png"></div>
+      <div class="number-count first">
+        <div id="days" class="number-text">00</div>
+      </div>
+      <div class="number-count">
+        <div id="hours" class="number-text">00</div>
+      </div>
+      <div class="number-count">
+        <div id="minutes" class="number-text">00</div>
+      </div>
+      <div class="number-count">
+        <div id="seconds" class="number-text">00</div>
+      </div>
+    </div>
+    <div class="ic-location col-lg-10" id="content_text">
+      <div>我们的婚礼由您见证更加幸福</div>
+      <div>2015年2月24日[农历乙未年 戊寅月 辛未日]星期二</div>
+      <div>恭请 各位 届时光临</div>
+      <div>新郎：蒋文林</div>
+      <div>新娘：唐佩</div>
+    </div>
+  </div>
+  <div class="m-gallery tab-pane fade" id="gallery">
+    <div class="swiper-container" id="gallery-swiper">
       <div class="swiper-wrapper">
-        <div class="swiper-slide banner-item">
+        <div class="swiper-slide">
           <table class="center-img-wrapper">
             <tr>
-              <td><img class="banner-1" src="/banners/banner1.jpg" width="100%"/></td>
+              <td>
+                <img src="/banners/1/640/IMG_6523.jpg" width="100%"/>
+              </td>
             </tr>
           </table>
         </div>
-        <div class="swiper-slide banner-item">
+        <div class="swiper-slide">
           <table class="center-img-wrapper">
             <tr>
-              <td><img class="banner-2" src="/banners/banner2.jpg" width="100%"/></td>
+              <td><img src="/banners/1/640/5a06c3387619bfedda8bbf2051279688_640x469.png" width="100%"/></td>
             </tr>
           </table>
         </div>
-        <div class="swiper-slide banner-item">
+        <div class="swiper-slide">
           <table class="center-img-wrapper">
             <tr>
-              <td><img class="banner-3" src="/banners/banner3.jpg" width="100%"/></td>
+              <td><img src="/banners/1/640/5a06c3387619bfedda8bbf2051279688_640x469.png" width="100%"/></td>
             </tr>
           </table>
         </div>
       </div>
-      <!--<div class="swiper-pagination"></div>-->
-    </div>
-    <div class="ic-header-names text-center">
-      <span id="bridegroom_text">新郎名字</span>
-      <span> & </span>
-      <span id="bride_text">新娘名字</span>
-    </div>
-    <div class="ic-header-subtitle text-center">are getting married!</div>
-  </div>
-  <div class="ic-date-cd text-center clearfix">
-    <div class="ceremony-title">The ceremony begins in:</div>
-    <div style="margin-bottom: 10px;"><img src="/img/main-nav-divider.png"></div>
-    <div class="number-count first">
-      <div id="days" class="number-text">00</div>
-    </div>
-    <div class="number-count">
-      <div id="hours" class="number-text">00</div>
-    </div>
-    <div class="number-count">
-      <div id="minutes" class="number-text">00</div>
-    </div>
-    <div class="number-count">
-      <div id="seconds" class="number-text">00</div>
+      <div class="gallery-pagination"></div>
+      <div class="swiper-button-prev"></div>
+      <div class="swiper-button-next"></div>
     </div>
   </div>
-  <div class="ic-location col-lg-10" id="content_text">
-    <div>我们的婚礼由您见证更加幸福</div>
-    <div>2015年2月24日[农历乙未年 戊寅月 辛未日]星期二</div>
-    <div>恭请 各位 届时光临</div>
-    <div>新郎：蒋文林</div>
-    <div>新娘：唐佩</div>
-  </div>
+  <!--<div class="m-rvsp tab-pane fade" id="rvsp">祝福</div>-->
 </div>
-<div class="m-gallery" id="gallery"></div>
-<div class="m-rvsp" id="rvsp"></div>
 <!-- bottom tabs -->
 <div style="bottom: 0;position: absolute; width: 100%;">
   <ul class="nav nav-tabs bottom-tabs">
@@ -83,6 +115,7 @@
 {% script "/Swiper/dist/js/swiper.min.js" %}
 <script>
   var receiver = {
+    t: null,
     data: {},
     setData: function(data) { this.data = data; },
     setBanner: function(images) {
@@ -97,10 +130,44 @@
     setContent: function(content) {
       $('#content_text').html(content);
     },
+    setCountdown: function(time) {
+      var nowTime = (new Date()).getTime();
+      var targetTime = (new Date(time)).getTime();
+      var gap = targetTime - nowTime;
+      var day = parseInt(gap / 86400000);
+      var hour = parseInt((gap % 86400000) / 3600000) - 8;
+      var minute = parseInt((gap % 3600000) / 60000);
+      var second = parseInt((gap % 60000) / 1000);
+      $('#days').text(alignPos(day, 2, '0'));
+      $('#hours').text(alignPos(hour, 2, '0'));
+      $('#minutes').text(alignPos(minute, 2, '0'));
+      $('#seconds').text(alignPos(second, 2, '0'));
+    },
+    setGallery: function(gallery) {
+      $('#gallery-swiper .swiper-wrapper').html('');
+      var es = [];
+      for (var i in gallery) {
+        es[i] = $('<div class="swiper-slide">' +
+            '<table class="center-img-wrapper">' +
+            '<tr>' +
+            '<td>' +
+            '<img src="'+gallery[i].thumbnailUrl+'" width="100%"/>' +
+            '</td>' +
+            '</tr>' +
+            '</table>' +
+            '</div>');
+      }
+      $('#gallery-swiper .swiper-wrapper').html(es);
+    },
     refresh: function() {
       this.setNames(this.data['name']);
       this.setBanner(this.data['banner']);
       this.setContent(this.data['content']);
+      this.setGallery(this.data['photos']);
+      this.t && window.clearInterval(this.t);
+      if (this.data['dateTime']) {
+        this.t = window.setInterval(this.setCountdown, 1000, this.data['dateTime']);
+      }
     }
   };
 
@@ -113,11 +180,23 @@
     receiver.refresh();
   }
 
-  var mySwiper = new Swiper ('.swiper-container', {
+  var bannerSwiper = new Swiper('#banner-swiper', {
     direction: 'horizontal',
     loop: true,
     autoplay: 5000
-//    pagination: '.swiper-pagination'
   });
+
+  var gallerySwiper;
+  $('a[data-toggle="tab"]').on('shown.bs.tab', function (e) {
+    gallerySwiper = new Swiper('#gallery-swiper', {
+      direction: 'horizontal',
+      loop: true,
+      autoplay: 5000,
+      nextButton: '.swiper-button-next',
+      prevButton: '.swiper-button-prev'
+    });
+  });
+
+
 </script>
 {% endblock %}

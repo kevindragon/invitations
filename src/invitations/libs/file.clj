@@ -70,7 +70,8 @@
 (defn gen-res-suitable-filename
   "生成便于在移动设备上显示的图片路径的文件名"
   [subdir filename]
-  (let [[p name] (explode-file-path filename)
+  (let [subdir (make-sure-path-str subdir)
+        [p name] (explode-file-path filename)
         path (clojure.string/join File/separator [p subdir])]
     (make-sure-path-exists (resource-prefix path))
     [path name]))

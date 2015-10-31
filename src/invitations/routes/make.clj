@@ -27,17 +27,30 @@
       (let [[url-path url-filename]
             (create-suitable-images (str output-path output-filename))]
         {:body
-         {:files [{:name (str "/" output-path output-filename)
-                   :size size
-                   :url (str "/" url-path url-filename)
-                   :thumbnailUrl (str "/" url-path url-filename)}]}})
-      {:body
-       { :files [{:name filename
+         {:files {:name (str "/" output-path output-filename)
                   :size size
-                  :error "Upload error."}]}})))
+                  :url (str "/" url-path url-filename)
+                  :thumbnailUrl (str "/" url-path url-filename)}}})
+      {:body
+       { :files {:name filename
+                 :size size
+                 :error "Upload error."}}})))
+
+(defn save-basic [{:keys [params]}]
+  (println params)
+  {:body {:status 0}})
+
+(defn upload-gallery [req]
+  ;(copy-file tempfile filename)
+  (println (:params req))
+  {:body [1 2 3]}
+  )
 
 (defroutes
   make-routes
   (GET "/preview" req (preview req))
   (GET "/make/:type" [type :as req] (make-card type req))
-  (POST "/upload/banner" [banner_images :as req] (upload-banner banner_images req)))
+  (POST "/upload/banner" [banner_images :as req] (upload-banner banner_images req))
+  (POST "/make/save/basic" req (save-basic req))
+  (POST "/upload/gallery" req (upload-gallery req)))
+

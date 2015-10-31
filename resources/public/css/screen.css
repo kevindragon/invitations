@@ -3,6 +3,16 @@ html, body {
   background: #ffffff;
 }
 
+.top-20 {
+  margin-top: 20px;
+}
+.top-30 {
+  margin-top: 30px;
+}
+.top-50 {
+  margin-top: 50px;
+}
+
 .center-img-wrapper {
   height:100%;
   width: 100%;
@@ -46,9 +56,13 @@ html, body {
   height: 100%;
 }
 
-.swiper-container {
+#banner-swiper {
   width: 320px;
   height: 240px;
+}
+
+#gallery-swiper {
+  height: 524px;
 }
 
 /* ic for invitation card */
@@ -121,5 +135,6 @@ html, body {
 
 .banner-img-add .close {
   position: absolute;
+  right: 5px;
   display: none;
 }

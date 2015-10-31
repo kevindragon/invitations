@@ -11,26 +11,26 @@
 
 <div class="row">
   <!-- left form -->
-  <div class="col-md-7 jumbotron">
+  <div class="col-md-7 jumbotron" id="base">
     <div class="form-horizontal">
       <legend>信息填写</legend>
       <div class="form-group">
-        <label for="bridegroom_name" class="col-lg-2 control-label">新郎</label>
-        <div class="col-lg-10">
+        <label for="bridegroom_name" class="col-md-2 control-label">新郎</label>
+        <div class="col-md-10">
           <input type="text" class="form-control" name="bridegroom_name" id="bridegroom_name" placeholder="新郎名字">
         </div>
       </div>
       <div class="form-group">
-        <label for="bride_name" class="col-lg-2 control-label">新娘</label>
-        <div class="col-lg-10">
+        <label for="bride_name" class="col-md-2 control-label">新娘</label>
+        <div class="col-md-10">
           <input type="text" class="form-control" name="bride_name" id="bride_name" placeholder="新娘名字">
         </div>
       </div>
     </div>
     <div class="form-horizontal">
       <div class="form-group">
-        <label class="col-lg-2 control-label">滚动图片</label>
-        <div class="col-lg-10">
+        <label class="col-md-2 control-label">滚动图片</label>
+        <div class="col-md-10">
           <div class="banner-images-wrap clearfix">
             <div class="banner-img-add banner-img-add-1 col-xs-4">
               <img src="/img/add.png" class="col-xs-12">
@@ -55,83 +55,63 @@
         </div>
       </div>
     </div>
-    <form class="form-horizontal">
+    <div class="form-horizontal">
       <fieldset>
         <div class="form-group">
-          <label for="datetime" class="col-lg-2 control-label">举办时间</label>
+          <label for="datetime" class="col-md-2 control-label">举办时间</label>
           <div class="col-sm-10">
             <input type="text" class="form-control" name="datetime" id="datetime" placeholder="举办时间"/>
           </div>
         </div>
         <div class="form-group">
-          <label for="content" class="col-lg-2 control-label">请柬内容</label>
-          <div class="col-lg-10">
+          <label for="content" class="col-md-2 control-label">请柬内容</label>
+          <div class="col-md-10">
             <textarea class="form-control" rows="6" name="content" id="content"></textarea>
             <!--<span class="help-block">A longer block of help text that breaks onto a new line and may extend beyond one line.</span>-->
           </div>
         </div>
-        <!--
-        <div class="form-group">
-          <label for="inputFile" class="col-lg-2 control-label">File</label>
-          <div class="col-lg-10">
-            <input type="text" readonly="" class="form-control floating-label" placeholder="Browse...">
-            <input type="file" id="inputFile" multiple="">
-          </div>
-        </div>
-        <div class="form-group">
-          <label class="col-lg-2 control-label">Radios</label>
-          <div class="col-lg-10">
-            <div class="radio radio-primary">
-              <label>
-                <input type="radio" name="optionsRadios" id="optionsRadios1" value="option1" checked="">
-                Option one is this
-              </label>
-            </div>
-            <div class="radio radio-primary">
-              <label>
-                <input type="radio" name="optionsRadios" id="optionsRadios2" value="option2">
-                Option two can be something else
-              </label>
-            </div>
-          </div>
-        </div>
-        <div class="form-group">
-          <label for="select" class="col-lg-2 control-label">Selects</label>
-          <div class="col-lg-10">
-            <select class="form-control" id="select">
-              <option>1</option>
-              <option>2</option>
-              <option>3</option>
-              <option>4</option>
-              <option>5</option>
-            </select>
-            <br>
-            <select multiple="" class="form-control">
-              <option>1</option>
-              <option>2</option>
-              <option>3</option>
-              <option>4</option>
-              <option>5</option>
-            </select>
-          </div>
-        </div>
-        -->
         <div class="hidden-fields">
           <input type="hidden" name="bridegroom_name">
           <input type="hidden" name="bride_name">
           <input type="hidden" name="banner_images">
         </div>
         <div class="form-group">
-          <div class="col-lg-6 col-lg-offset-6 text-right">
-            <button type="submit" class="btn btn-primary">保存</button>
+          <div class="col-md-6 col-md-offset-6 text-right">
+            <button type="submit" class="btn btn-primary" onclick="saveBasicInfo();">下一步</button>
           </div>
         </div>
       </fieldset>
-    </form>
+    </div>
+  </div>
+  <div class="col-md-7 jumbotron" style="display: none;" id="gallery">
+    <div class="form-horizontal">
+      <legend>相册</legend>
+    </div>
+    <div class="form-horizontal">
+      <div class="form-group">
+        <div class="col-md-12">
+          <div class="banner-images-wrap clearfix">
+            <div class="row col-xs-12">
+              <span class="btn btn-success fileinput-button">
+                <i class="glyphicon glyphicon-plus"></i>
+                <span>添加...</span>
+                <input type="file" name="banner_images" id="photo-select" data-url="/upload/banner" multiple>
+              </span>
+            </div>
+            <div id="photos" class="col-md-12"></div>
+          </div>
+        </div>
+      </div>
+      <div class="form-group">
+        <div class="col-md-6 col-md-offset-6 text-right">
+          <button type="submit" class="btn btn-primary">上一步</button>
+          <button type="submit" class="btn btn-primary">完成</button>
+        </div>
+      </div>
+    </div>
   </div>
   <!-- right preview -->
   <div class="col-md-5">
-
     <div class="row">
       <div class="phone">
         <div>
@@ -142,7 +122,6 @@
         </div>
       </div>
     </div>
-
   </div>
 </div>
 
@@ -183,21 +162,52 @@
       }
     }
   };
+
   var datum = {
+    fields: ['banner', 'name', 'dateTime', 'content'],
     data: {banner: [], name: {}},
     setBanner: function(images) { this.data['banner'] = images; },
     setName: function(name, value) { this.data['name'][name] = value; },
     setDateTime: function(dateTime) { this.data['dateTime'] = dateTime; },
     setContent: function(content) { this.data['content'] = content; },
+    setPhotos: function(photos) { this.data['photos'] = photos; },
     transfer: function() {
       var iFrameWin = $('#preview_frame').get(0).contentWindow.window;
       iFrameWin.receive(this.data);
+    },
+    validate: function() {
+      if (this.data.length <= 0) {
+        return false;
+      }
+      for (var i in this.fields) {
+        var field = this.fields[i];
+        if (this.data[field] && this.data[field].length <= 0) {
+          return false;
+        }
+      }
+      return true;
     }
   };
+
+  var acceptFileTypes = /^image\/(gif|jpe?g|png)$/i;
+  var photos = [];
 
   function setHiddenFields(name, value) {
     $('.hidden-fields input[name='+name+']').val(value);
   }
+
+  function saveBasicInfo() {
+    if (datum.validate()) {
+      $.post('/make/save/basic', datum.data, function(data) {
+        console.log(data);
+      }, 'json');
+      $('#base').hide();
+      $('#gallery').show();
+    } else {
+      alert('您还有信息没有填写完整');
+    }
+  }
+
   $(function() {
     $('#bridegroom_name').keyup(function() {
       var text = $.trim($(this).val());
@@ -224,11 +234,15 @@
       datum.transfer();
     });
 
+    $('.banner-img-add').hover(function() {
+      $(this).find('.close').show();
+    }, function() {
+      $(this).find('.close').hide();
+    });
     $('.banner-img-add .close').click(function() {
       var img = $(this).parent().find('img');
-      bannerImages.remove(img.prop('src'));
-      img.prop('src', '/img/add.png');
-      $(this).hide();
+      bannerImages.remove(img.attr('src'));
+      img.attr('src', '/img/add.png');
       setHiddenFields('banner_images', bannerImages.all());
       datum.setBanner(bannerImages.images());
       datum.transfer();
@@ -236,8 +250,20 @@
 
     $('#add_banner_images').fileupload({
       dataType: 'json',
+      maxFileSize: 3,
+      add: function(e, data) {
+        if(data.originalFiles[0]['type'] && !acceptFileTypes.test(data.originalFiles[0]['type'])) {
+          alert('Not an accepted file type');
+          return;
+        }
+        if(data.originalFiles[0]['size'] && data.originalFiles[0]['size'] > 1048576) {
+          alert('Filesize is too big');
+          return;
+        }
+        data.submit();
+      },
       done: function (e, data) {
-        $.each(data.result.files, function (index, file) {
+        $.each(data.result, function (index, file) {
           bannerImages.add(file.name);
         });
         bannerImages.each(function(i, url) {
@@ -245,6 +271,47 @@
           datum.setBanner(bannerImages.images());
           datum.transfer();
         });
+      }
+    });
+
+    $('#photo-select').fileupload({
+      dataType: 'json',
+      maxFileSize: 2,
+      add: function(e, data) {
+        if(data.originalFiles[0]['type'] && !acceptFileTypes.test(data.originalFiles[0]['type'])) {
+          alert('Not an accepted file type');
+          return;
+        }
+        if(data.originalFiles[0]['size'] && data.originalFiles[0]['size'] > 1048576) {
+          alert('Filesize is too big');
+          return;
+        }
+        if (photos.length >= 10) {
+          alert('不能超过1张照片');
+          return;
+        }
+        data.submit();
+      },
+      done: function (e, data) {
+        $.each(data.result, function (index, file) {
+          for (var i in photos) {
+            if (photos[i].name == file.name) {
+              alert('您已经添加过这张照片！');
+              return;
+            }
+          }
+          photos.push(file);
+        });
+        $('#photos').html('');
+        $(photos).each(function(index) {
+          $('#photos').append($(
+              '<div class="banner-img-add banner-img-add-1 col-xs-3 top-20">' +
+              '<img src="'+photos[index].thumbnailUrl+'" class="col-xs-12">' +
+              '<button type="button" class="close">×</button>'+
+          '</div>'));
+        });
+        datum.setPhotos(photos);
+        datum.transfer();
       }
     });
   });

@@ -9,7 +9,7 @@
 
 (defn create-suitable-images [filename]
   (let [[suitable-path suitable-filename]
-        (gen-res-suitable-filename "640/" filename)]
+        (gen-res-suitable-filename "640" filename)]
     (-> (io/file (resource-prefix filename))
         ((resize-width-fn 640))
         (format/as-file (resource-prefix
